@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div
+    class="item"
+    *ngFor="let item of items; let i = index"
+    [ngClass]="{
+      'item-active': item.isActive,
+      'item-passed': isItemPassed(i)
+    }"
+    (click)="onClickItem(item)"
+  >
+    {{ item.title }}
+  </div>
+</div>

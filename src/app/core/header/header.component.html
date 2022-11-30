@@ -1,0 +1,12 @@
+<div class="header">
+  <div class="logo" routerLink="/">cv maker</div>
+  <div class="navigation">
+    <div
+      class="navigation_link"
+      *ngFor="let route of routes"
+      [routerLink]="route.url"
+    >
+      <div>{{ route.title }}</div>
+    </div>
+  </div>
+</div>

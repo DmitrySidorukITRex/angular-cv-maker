@@ -1,0 +1,9 @@
+<div class="layout">
+  <div class="header">
+    <app-progress-bar
+      [items]="(progressBarItems$ | async) || []"
+      (clickItem)="onClickItem($event)"
+    ></app-progress-bar>
+  </div>
+  <router-outlet></router-outlet>
+</div>
