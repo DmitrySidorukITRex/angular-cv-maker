@@ -1,1 +1,18 @@
-<p>builder-personal-details works!</p>
+<div class="layout">
+  <div class="sub_headline">Let's start with</div>
+  <h1 class="headline">Contact Information</h1>
+  <div
+    class="content"
+    *ngIf="builderDataService.personalDetails$ | async as personalDetails"
+  >
+    <app-personal-details-form
+      [personalDetails]="personalDetails"
+      (cancelForm)="onCancelForm()"
+      (changeForm)="onChangeForm($event)"
+    ></app-personal-details-form>
+    <div class="form_actions">
+      <button class="basic_button" (click)="onCancelForm()">Back</button>
+      <button class="primary_button" (click)="onSaveForm()">Save & next</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div class="info">
+    <div class="title">{{ item.title }}</div>
+    <div class="subtitle">
+      {{
+        getDate(item.startDateMonth, item.startDateYear) +
+          " - " +
+          getDate(item.endDateMonth, item.endDateYear)
+      }}
+    </div>
+  </div>
+  <div class="actions">
+    <button class="actions_btn" (click)="onRemove(item.id)">
+      <span class="material-icons">close</span>
+    </button>
+    <button class="actions_btn" (click)="onEdit(item.id)">
+      <span class="material-icons">edit</span>
+    </button>
+  </div>
+</div>

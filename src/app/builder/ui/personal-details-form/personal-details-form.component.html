@@ -1,0 +1,59 @@
+<form [formGroup]="form" (change)="onChange()">
+  <div class="form_row">
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>First Name</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="firstname"
+        placeholder="First Name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>Last Name</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="lastname"
+        placeholder="Last Name"
+      />
+    </mat-form-field>
+  </div>
+  <div class="form_row">
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>Email</mat-label>
+      <input type="text" matInput formControlName="email" placeholder="Email" />
+      <mat-error *ngIf="f.email.hasError('email')">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>Phone</mat-label>
+      <input type="text" matInput formControlName="phone" placeholder="Phone" />
+    </mat-form-field>
+  </div>
+  <mat-form-field appearance="outline" class="form_group">
+    <mat-label>Address</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="address"
+      placeholder="Address"
+    />
+  </mat-form-field>
+  <div class="form_row">
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>City</mat-label>
+      <input type="text" matInput formControlName="city" placeholder="City" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>Zip Code</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="code"
+        placeholder="Zip Code"
+      />
+    </mat-form-field>
+  </div>
+</form>

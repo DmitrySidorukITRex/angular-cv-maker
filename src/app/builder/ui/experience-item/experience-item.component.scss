@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 1px solid #e5e5e5;
+
+  .title {
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 15px;
+
+    &_btn {
+      border: none;
+      background-color: inherit;
+      cursor: pointer;
+    }
+  }
+}

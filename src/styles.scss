@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 html,
 body {
   height: 100%;
@@ -8,4 +10,93 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #00212d;
   color: #fff;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #c7d8e0;
+}
+
+mat-form-field {
+  .mat-hint,
+  input,
+  ::placeholder,
+  .mat-form-field-label {
+    color: #023642;
+  }
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.mat-select-panel {
+  background-color: #fff;
+}
+
+.mat-select-value,
+.mat-option,
+.mat-option.mat-active {
+  color: #58585f;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: #58585f;
+  font-weight: 700;
+}
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple),
+.mat-select-panel .mat-option:hover {
+  background-color: #f2f2f2;
+}
+
+.form_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 20px;
+
+  .form_group {
+    flex: 1;
+  }
+}
+
+.form_group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form_actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.primary_button {
+  background: #3d50ff;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  border: 2px solid #3d50ff;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #bf2f74;
+    border-color: #bf2f74;
+  }
+}
+
+.basic_button {
+  font-size: 18px;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #023642;
+  border: 1px solid #c7d8e0;
+  background-color: #fff;
+
+  &:hover {
+    border-color: #000;
+  }
 }

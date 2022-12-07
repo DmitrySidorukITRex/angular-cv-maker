@@ -1,0 +1,72 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <div class="form_row">
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>Degree</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="degree"
+        placeholder="Degree"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>City</mat-label>
+      <input type="text" matInput formControlName="city" placeholder="City" />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline" class="form_group">
+    <mat-label>School</mat-label>
+    <input type="text" matInput formControlName="school" placeholder="School" />
+  </mat-form-field>
+
+  <div class="form_row">
+    <div class="form_group">Start Date</div>
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>Month</mat-label>
+      <mat-select formControlName="startDateMonth" name="startDateMonth">
+        <mat-option *ngFor="let month of months" [value]="month.value">
+          {{ month.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>Year</mat-label>
+      <mat-select formControlName="startDateYear" name="startDateYear">
+        <mat-option *ngFor="let year of years" [value]="year.value">
+          {{ year.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="form_row">
+    <div class="form_group">Graduation Date</div>
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>Month</mat-label>
+      <mat-select formControlName="endDateMonth" name="endDateMonth">
+        <mat-option *ngFor="let month of months" [value]="month.value">
+          {{ month.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form_group">
+      <mat-label>Year</mat-label>
+      <mat-select formControlName="endDateYear" name="endDateYear">
+        <mat-option *ngFor="let year of years" [value]="year.value">
+          {{ year.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline" class="form_group">
+    <mat-label>Details</mat-label>
+    <textarea matInput formControlName="details"></textarea>
+  </mat-form-field>
+
+  <div class="form_actions">
+    <button class="basic_button" (click)="onCancel()">Cancel</button>
+    <button class="primary_button" type="submit">Save</button>
+  </div>
+</form>

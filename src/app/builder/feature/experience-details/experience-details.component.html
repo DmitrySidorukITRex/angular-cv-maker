@@ -1,1 +1,25 @@
-<p>experience-details works!</p>
+<div class="layout">
+  <h1 class="headline">Describe Your Experiance</h1>
+  <div class="content">
+    <app-accordion *ngFor="let item of accordionItems">
+      <ng-container header
+        ><app-experience-header [title]="item.title"></app-experience-header
+      ></ng-container>
+      <ng-container
+        body
+        *ngIf="
+          builderDataService.experienceDetails$ | async as experienceDetails
+        "
+      >
+        <app-experience-body
+          [itemTitle]="item.title"
+          [experienceDetails]="experienceDetails"
+          [currentEducationDetails]="currentEducationDetails"
+          (saveEducationExperience)="onSaveEducationExperience($event)"
+          (removeEducationExperience)="onRemoveEducationExperience($event)"
+          (editEducationExperience)="onEditEducationExperience($event)"
+        ></app-experience-body>
+      </ng-container>
+    </app-accordion>
+  </div>
+</div>

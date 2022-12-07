@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <div class="header" (click)="isOpened = !isOpened">
+    <ng-content select="[header]"></ng-content>
+  </div>
+  <div class="content" *ngIf="isOpened">
+    <ng-content select="[body]"></ng-content>
+  </div>
+</div>
