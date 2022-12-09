@@ -10,7 +10,7 @@ export interface IPersonalDetails {
 
 export interface IExperienceDetails {
   education: IEducationDetails[];
-  work: [];
+  work: IWorkDetails[];
 }
 
 export interface IEducationDetails {
@@ -25,11 +25,23 @@ export interface IEducationDetails {
   details?: string;
 }
 
+export interface IWorkDetails {
+  id: string;
+  jobTitle?: string;
+  city?: string;
+  employer?: string;
+  startDateMonth?: string;
+  startDateYear?: string;
+  endDateMonth?: string;
+  endDateYear?: string;
+  responsibilities?: string;
+}
+
 export interface IExperienceItem {
   id: string;
-  title: string;
-  startDateMonth: string | undefined;
-  startDateYear: string | undefined;
-  endDateMonth: string | undefined;
-  endDateYear: string | undefined;
+  title?: string;
+  startDateMonth?: string;
+  startDateYear?: string;
+  endDateMonth?: string;
+  endDateYear?: string;
 }

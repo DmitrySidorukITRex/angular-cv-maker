@@ -7,11 +7,11 @@ import {
   Output,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { IEducationDetails } from 'src/app/shared/interfaces/builder.interface';
 import {
   MonthSelectItems,
   YearSelectItems,
-} from './education-details-form.constants';
+} from 'src/app/shared/constants/app.constants';
+import { IEducationDetails } from 'src/app/shared/interfaces/builder.interface';
 
 @Component({
   selector: 'app-education-details-form',

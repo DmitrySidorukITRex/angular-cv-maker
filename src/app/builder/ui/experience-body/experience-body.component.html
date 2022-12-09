@@ -1,17 +1,31 @@
-<app-experience-item
-  *ngFor="let item of experienceDetails.education"
-  [item]="getExperienceItem(item)"
-  (removeItem)="onRemoveItem($event)"
-  (editItem)="onEditItem($event)"
-></app-experience-item>
-<div [ngSwitch]="itemTitle" *ngIf="isOpenedForm">
+<div [ngSwitch]="itemTitle">
   <ng-container *ngSwitchCase="experienceTitle.EDUCATION">
+    <app-experience-item
+      *ngFor="let item of experienceDetails.education"
+      [item]="getExperienceItem(item)"
+      (removeItem)="onRemoveExperienceItem($event)"
+      (editItem)="onEditExperieceItem($event)"
+    ></app-experience-item>
     <app-education-details-form
+      *ngIf="isOpenedForm"
       [educationDetails]="currentEducationDetails"
       (cancelForm)="onCancelForm()"
       (saveForm)="onSaveForm($event)"
     ></app-education-details-form>
   </ng-container>
-  <div *ngSwitchCase="experienceTitle.WORK">HAHAH</div>
+  <div *ngSwitchCase="experienceTitle.WORK">
+    <app-experience-item
+      *ngFor="let item of experienceDetails.work"
+      [item]="getExperienceItem(item)"
+      (removeItem)="onRemoveExperienceItem($event)"
+      (editItem)="onEditExperieceItem($event)"
+    ></app-experience-item>
+    <app-work-details-form
+      *ngIf="isOpenedForm"
+      [workDetails]="currentWorkDetails"
+      (cancelForm)="onCancelForm()"
+      (saveForm)="onSaveForm($event)"
+    ></app-work-details-form>
+  </div>
 </div>
 <button class="add_btn" (click)="onAddExperience()">Add your experience</button>

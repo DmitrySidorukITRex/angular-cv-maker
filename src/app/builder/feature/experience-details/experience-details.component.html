@@ -15,9 +15,10 @@
           [itemTitle]="item.title"
           [experienceDetails]="experienceDetails"
           [currentEducationDetails]="currentEducationDetails"
-          (saveEducationExperience)="onSaveEducationExperience($event)"
-          (removeEducationExperience)="onRemoveEducationExperience($event)"
-          (editEducationExperience)="onEditEducationExperience($event)"
+          [currentWorkDetails]="currentWorkDetails"
+          (saveExperience)="onSaveExperience($event, item.title)"
+          (removeExperience)="onRemoveExperience($event, item.title)"
+          (editExperience)="onEditExperience($event, item.title)"
         ></app-experience-body>
       </ng-container>
     </app-accordion>

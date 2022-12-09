@@ -11,6 +11,7 @@ import {
   IEducationDetails,
   IExperienceDetails,
   IExperienceItem,
+  IWorkDetails,
 } from 'src/app/shared/interfaces/builder.interface';
 
 @Component({
@@ -23,9 +24,10 @@ export class ExperienceBodyComponent implements OnInit {
   @Input() itemTitle: string;
   @Input() experienceDetails: IExperienceDetails;
   @Input() currentEducationDetails: IEducationDetails;
-  @Output() saveEducationExperience = new EventEmitter<IEducationDetails>();
-  @Output() removeEducationExperience = new EventEmitter<string>();
-  @Output() editEducationExperience = new EventEmitter<string>();
+  @Input() currentWorkDetails: IWorkDetails;
+  @Output() saveExperience = new EventEmitter<IEducationDetails>();
+  @Output() removeExperience = new EventEmitter<string>();
+  @Output() editExperience = new EventEmitter<string>();
 
   public isOpenedForm = false;
   public experienceTitle = ExperienceTitle;
@@ -34,15 +36,17 @@ export class ExperienceBodyComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public getExperienceItem(data: IEducationDetails): IExperienceItem {
-    return {
-      id: data.id,
-      title: data.degree ? data.degree : 'Education',
-      startDateMonth: data.startDateMonth,
-      startDateYear: data.startDateYear,
-      endDateMonth: data.endDateMonth,
-      endDateYear: data.endDateYear,
-    };
+  public getExperienceItem(
+    data: IEducationDetails | IWorkDetails
+  ): IExperienceItem {
+    switch (this.itemTitle) {
+      case this.experienceTitle.EDUCATION:
+        return this.getExperienceItemFromEducationDetails(data);
+      case this.experienceTitle.WORK:
+        return this.getExperienceItemFromWorkDetails(data);
+      default:
+        return { id: data.id };
+    }
   }
 
   public onAddExperience(): void {
@@ -54,16 +58,42 @@ export class ExperienceBodyComponent implements OnInit {
   }
 
   public onSaveForm(data: IEducationDetails): void {
-    this.saveEducationExperience.emit(data);
+    this.saveExperience.emit(data);
     this.isOpenedForm = false;
   }
 
-  public onRemoveItem(id: string): void {
-    this.removeEducationExperience.emit(id);
+  public onRemoveExperienceItem(id: string): void {
+    this.removeExperience.emit(id);
   }
 
-  public onEditItem(id: string): void {
-    this.editEducationExperience.emit(id);
+  public onEditExperieceItem(id: string): void {
+    this.editExperience.emit(id);
     this.isOpenedForm = true;
+  }
+
+  private getExperienceItemFromEducationDetails(
+    data: IEducationDetails
+  ): IExperienceItem {
+    return {
+      id: data.id,
+      title: data.degree ? data.degree : 'Education',
+      startDateMonth: data.startDateMonth,
+      startDateYear: data.startDateYear,
+      endDateMonth: data.endDateMonth,
+      endDateYear: data.endDateYear,
+    };
+  }
+
+  private getExperienceItemFromWorkDetails(
+    data: IWorkDetails
+  ): IExperienceItem {
+    return {
+      id: data.id,
+      title: data.jobTitle ? data.jobTitle : 'Job title',
+      startDateMonth: data.startDateMonth,
+      startDateYear: data.startDateYear,
+      endDateMonth: data.endDateMonth,
+      endDateYear: data.endDateYear,
+    };
   }
 }

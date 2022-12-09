@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import {
   IEducationDetails,
   IExperienceDetails,
   IPersonalDetails,
+  IWorkDetails,
 } from 'src/app/shared/interfaces/builder.interface';
 import { IProgressBarItem } from 'src/app/shared/ui/progress-bar/progress-bar.interface';
 import { URL } from '../../shared/constants/app.constants';
@@ -31,12 +32,16 @@ export class BuilderDataService {
   private currentEducationDetailsSbj = new BehaviorSubject<IEducationDetails>({
     id: '',
   });
+  private currentWorkDetailsSbj = new BehaviorSubject<IWorkDetails>({
+    id: '',
+  });
 
   public progressBarItems$ = this.progressBarItemsSbj.asObservable();
   public personalDetails$ = this.personalDetailsSbj.asObservable();
   public experienceDetails$ = this.experienceDetailsSbj.asObservable();
   public currentEducationDetails$ =
     this.currentEducationDetailsSbj.asObservable();
+  public currentWorkDetails$ = this.currentWorkDetailsSbj.asObservable();
 
   public getProgressBarItems(): IProgressBarItem[] {
     return this.progressBarItemsSbj.value;
@@ -68,5 +73,13 @@ export class BuilderDataService {
 
   public setCurrentEducationDetails(data: IEducationDetails): void {
     this.currentEducationDetailsSbj.next(data);
+  }
+
+  public getCurrentWorkDetails(): IWorkDetails {
+    return this.currentWorkDetailsSbj.value;
+  }
+
+  public setCurrentWorkDetails(data: IWorkDetails): void {
+    this.currentWorkDetailsSbj.next(data);
   }
 }
