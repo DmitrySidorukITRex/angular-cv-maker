@@ -14,8 +14,6 @@
         <app-experience-body
           [itemTitle]="item.title"
           [experienceDetails]="experienceDetails"
-          [currentEducationDetails]="currentEducationDetails"
-          [currentWorkDetails]="currentWorkDetails"
           (saveExperience)="onSaveExperience($event, item.title)"
           (removeExperience)="onRemoveExperience($event, item.title)"
           (editExperience)="onEditExperience($event, item.title)"

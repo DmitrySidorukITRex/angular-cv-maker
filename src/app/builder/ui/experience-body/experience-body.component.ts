@@ -23,14 +23,18 @@ import {
 export class ExperienceBodyComponent implements OnInit {
   @Input() itemTitle: string;
   @Input() experienceDetails: IExperienceDetails;
-  @Input() currentEducationDetails: IEducationDetails;
-  @Input() currentWorkDetails: IWorkDetails;
-  @Output() saveExperience = new EventEmitter<IEducationDetails>();
+  @Output() saveExperience = new EventEmitter<
+    IEducationDetails | IWorkDetails
+  >();
   @Output() removeExperience = new EventEmitter<string>();
-  @Output() editExperience = new EventEmitter<string>();
+  @Output() editExperience = new EventEmitter<
+    IEducationDetails | IWorkDetails
+  >();
 
   public isOpenedForm = false;
   public experienceTitle = ExperienceTitle;
+  public currentEducationDetails: IEducationDetails = { id: '' };
+  public currentWorkDetails: IWorkDetails = { id: '' };
 
   constructor() {}
 
@@ -54,12 +58,17 @@ export class ExperienceBodyComponent implements OnInit {
   }
 
   public onCancelForm(): void {
-    this.isOpenedForm = false;
+    this.clearForm();
   }
 
-  public onSaveForm(data: IEducationDetails): void {
-    this.saveExperience.emit(data);
-    this.isOpenedForm = false;
+  public onSaveForm(data: IEducationDetails | IWorkDetails): void {
+    if (this.currentEducationDetails.id || this.currentWorkDetails.id) {
+      this.editExperience.emit(data);
+    } else {
+      this.saveExperience.emit(data);
+    }
+
+    this.clearForm();
   }
 
   public onRemoveExperienceItem(id: string): void {
@@ -67,7 +76,20 @@ export class ExperienceBodyComponent implements OnInit {
   }
 
   public onEditExperieceItem(id: string): void {
-    this.editExperience.emit(id);
+    switch (this.itemTitle) {
+      case ExperienceTitle.EDUCATION:
+        this.currentEducationDetails = this.experienceDetails.education.find(
+          (x) => x.id === id
+        )!;
+        break;
+      case ExperienceTitle.WORK:
+        this.currentWorkDetails = this.experienceDetails.work.find(
+          (x) => x.id === id
+        )!;
+        break;
+      default:
+        break;
+    }
     this.isOpenedForm = true;
   }
 
@@ -95,5 +117,11 @@ export class ExperienceBodyComponent implements OnInit {
       endDateMonth: data.endDateMonth,
       endDateYear: data.endDateYear,
     };
+  }
+
+  private clearForm(): void {
+    this.isOpenedForm = false;
+    this.currentEducationDetails = { id: '' };
+    this.currentWorkDetails = { id: '' };
   }
 }

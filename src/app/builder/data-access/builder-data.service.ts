@@ -29,19 +29,10 @@ export class BuilderDataService {
   private experienceDetailsSbj = new BehaviorSubject<IExperienceDetails>(
     experienceDetailsInitial
   );
-  private currentEducationDetailsSbj = new BehaviorSubject<IEducationDetails>({
-    id: '',
-  });
-  private currentWorkDetailsSbj = new BehaviorSubject<IWorkDetails>({
-    id: '',
-  });
 
   public progressBarItems$ = this.progressBarItemsSbj.asObservable();
   public personalDetails$ = this.personalDetailsSbj.asObservable();
   public experienceDetails$ = this.experienceDetailsSbj.asObservable();
-  public currentEducationDetails$ =
-    this.currentEducationDetailsSbj.asObservable();
-  public currentWorkDetails$ = this.currentWorkDetailsSbj.asObservable();
 
   public getProgressBarItems(): IProgressBarItem[] {
     return this.progressBarItemsSbj.value;
@@ -65,21 +56,5 @@ export class BuilderDataService {
 
   public setExperienceDetails(data: IExperienceDetails): void {
     this.experienceDetailsSbj.next(data);
-  }
-
-  public getCurrentEducationDetails(): IEducationDetails {
-    return this.currentEducationDetailsSbj.value;
-  }
-
-  public setCurrentEducationDetails(data: IEducationDetails): void {
-    this.currentEducationDetailsSbj.next(data);
-  }
-
-  public getCurrentWorkDetails(): IWorkDetails {
-    return this.currentWorkDetailsSbj.value;
-  }
-
-  public setCurrentWorkDetails(data: IWorkDetails): void {
-    this.currentWorkDetailsSbj.next(data);
   }
 }
