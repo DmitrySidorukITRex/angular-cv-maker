@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IWorkDetails } from 'src/app/shared/interfaces/builder.interface';
 import {
@@ -10,6 +17,7 @@ import {
   selector: 'app-work-details-form',
   templateUrl: './work-details-form.component.html',
   styleUrls: ['./work-details-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WorkDetailsFormComponent implements OnInit {
   @Input() workDetails: IWorkDetails;

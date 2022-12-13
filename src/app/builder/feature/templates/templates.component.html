@@ -1,1 +1,15 @@
-<p>templates works!</p>
+<div class="layout">
+  <div class="content" #content>
+    <app-templates-to-print
+      [personalDetails]="builderDataService.getPersonalDetails()"
+      [experienceSectionTitles]="builderDataService.getExperienceSections()"
+      [experienceDetails]="builderDataService.getExperienceDetails()"
+    ></app-templates-to-print>
+  </div>
+  <div class="form_actions">
+    <button class="basic_button" (click)="onBack()">Back</button>
+    <button class="primary_button" (click)="onDownloadPDF()">
+      Download CV
+    </button>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="layout">
+  <app-side-bar
+    [items]="templatesHelper.getSideBarData(personalDetails)"
+  ></app-side-bar>
+  <div class="sections">
+    <h1>{{ templateName }}</h1>
+    <ng-container *ngFor="let section of allSections">
+      <h2>{{ section.name }}</h2>
+      <div class="section" *ngFor="let item of section.items">
+        <div class="section_header">
+          <div class="section_header-title">
+            {{ item.title }}
+          </div>
+          <div class="section_header-date">
+            {{ item.date }}
+          </div>
+        </div>
+        <div class="section_subtitle">
+          {{ item.subTitle }}
+        </div>
+        <div class="section_details">
+          {{ item.info }}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

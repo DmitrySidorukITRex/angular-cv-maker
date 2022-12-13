@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ExperienceTitle } from 'src/app/shared/constants/app.constants';
 import {
   IEducationDetails,
   IExperienceDetails,
   IWorkDetails,
 } from 'src/app/shared/interfaces/builder.interface';
+import { URL } from 'src/app/shared/constants/app.constants';
 import { BuilderDataService } from '../../data-access/builder-data.service';
 import { AccordionItems } from './experience-details.constants';
 
@@ -12,13 +14,17 @@ import { AccordionItems } from './experience-details.constants';
   selector: 'app-experience-details',
   templateUrl: './experience-details.component.html',
   styleUrls: ['./experience-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExperienceDetailsComponent implements OnInit {
   public accordionItems = AccordionItems;
   public currentEducationDetails: IEducationDetails;
   public currentWorkDetails: IWorkDetails;
 
-  constructor(public builderDataService: BuilderDataService) {}
+  constructor(
+    public builderDataService: BuilderDataService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -93,6 +99,14 @@ export class ExperienceDetailsComponent implements OnInit {
     }
 
     this.builderDataService.setExperienceDetails({ ...experienceDetails });
+  }
+
+  public onCancelForm(): void {
+    this.router.navigate([URL.BUILDER_PERSONAL_DETAILS]);
+  }
+
+  public onSaveForm(): void {
+    this.router.navigate([URL.BUILDER_TEMPLATE]);
   }
 
   private saveEducationExperience(

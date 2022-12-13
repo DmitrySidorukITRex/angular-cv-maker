@@ -1,0 +1,9 @@
+<div class="sidebar">
+  <div class="sidebar_title">Personal</div>
+  <ng-container *ngFor="let item of items">
+    <div class="sidebar_item" *ngIf="item.value && item.value.trim() !== ''">
+      <div class="sidebar_item_label">{{ item.label }}</div>
+      {{ item.value }}
+    </div>
+  </ng-container>
+</div>

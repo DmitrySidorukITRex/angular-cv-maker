@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IPersonalDetails } from 'src/app/shared/interfaces/builder.interface';
 import { URL } from 'src/app/shared/constants/app.constants';
@@ -8,6 +8,7 @@ import { BuilderDataService } from '../../data-access/builder-data.service';
   selector: 'app-personal-details',
   templateUrl: './personal-details.component.html',
   styleUrls: ['./personal-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PersonalDetailsComponent implements OnInit {
   constructor(

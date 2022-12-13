@@ -1,0 +1,26 @@
+:host {
+  min-height: 100%;
+}
+
+.sidebar {
+  width: 250px;
+  color: #fff;
+  background-color: #3f6592;
+  padding: 40px 15px;
+  height: 100%;
+  box-sizing: border-box;
+
+  &_title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  &_item {
+    font-size: 12px;
+
+    &_label {
+      margin: 15px 0 5px 0;
+      font-weight: 600;
+    }
+  }
+}
